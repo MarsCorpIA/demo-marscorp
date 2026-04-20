@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clínica Dental Sestao | Tu sonrisa en buenas manos</title>
+  <meta name="description" content="Clínica dental de confianza en Sestao, Bizkaia. Revisión gratuita, ortodoncia, implantes, blanqueamiento y más. Llámanos: 944 95 49 56." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            blue: {
+              50:  '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+
+    /* Hero accordion */
+    .acc-panel {
+      width: 64px;
+      flex-shrink: 0;
+      transition: width 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .acc-panel.active { width: 380px; }
+    .acc-label-v {
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .acc-label-h {
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0;
+    }
+    .acc-panel.active .acc-label-v { opacity: 0; }
+    .acc-panel.active .acc-label-h { opacity: 1; }
+
+    /* FAQ accordion */
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .faq-item.open .faq-body {
+      max-height: 300px;
+      padding-top: 0;
+      padding-bottom: 1.25rem;
+    }
+    .faq-arrow {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Testimonial slider */
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .testimonial-card {
+      min-width: 100%;
+    }
+    @media (min-width: 768px) {
+      .testimonial-card { min-width: 50%; }
+    }
+    @media (min-width: 1024px) {
+      .testimonial-card { min-width: 33.333%; }
+    }
+
+    /* Dot active */
+    .dot.active {
+      width: 20px;
+      background-color: #2563eb;
+    }
+
+    /* Sticky nav shadow on scroll */
+    .nav-scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+<!-- ============================================================
+     1. NAVIGATION
+     ============================================================ -->
+<header id="navbar" class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#inicio" class="flex items-center gap-2.5">
+      <span class="text-2xl">🦷</span>
+      <div class="leading-tight">
+        <span class="font-bold text-gray-900 text-base block">Clínica Dental Sestao</span>
+        <span class="text-gray-400 text-xs hidden sm:block">Tu sonrisa en buenas manos</span>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-1">
+      <a href="#inicio"        class="px-3 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors">Inicio</a>
+      <a href="#tratamientos"  class="px-3 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors">Tratamientos</a>
+      <a href="#precios"       class="px-3 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors">Precios</a>
+      <a href="#resenas"       class="px-3 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors">Reseñas</a>
+      <a href="#faq"           class="px-3 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors">FAQ</a>
+      <a href="#contacto"      class="px-3 py-2 text-sm text-gray-600 hover:text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors">Contacto</a>
+    </nav>
+
+    <!-- CTA -->
+    <a href="tel:944954956"
+       class="hidden md:inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors">
+      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/>
+      </svg>
+      944 95 49 56
+    </a>
+
+    <!-- Mobile menu btn -->
+    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white px-4 py-3 space-y-1">
+    <a href="#inicio"       class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600">Inicio</a>
+    <a href="#tratamientos" class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600">Tratamientos</a>
+    <a href="#precios"      class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600">Precios</a>
+    <a href="#resenas"      class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600">Reseñas</a>
+    <a href="#faq"          class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600">FAQ</a>
+    <a href="#contacto"     class="block px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600">Contacto</a>
+    <a href="tel:944954956" class="block mt-2 text-center bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">📞 944 95 49 56</a>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     2. HERO
+     ============================================================ -->
+<section id="inicio" class="bg-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+
+      <!-- Left: copy -->
+      <div class="w-full md:w-1/2 text-center md:text-left">
+        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">
+          Clínica Dental de Confianza · Sestao, Bizkaia
+        </span>
+
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
+          Tu sonrisa en<br>
+          <span class="text-blue-600">buenas manos</span>
+        </h1>
+
+        <p class="mt-5 text-lg text-gray-500 max-w-xl mx-auto md:mx-0">
+          Somos la clínica dental de referencia en Sestao. Tratamientos modernos para toda la
+          familia con un trato cercano, honesto y precios transparentes.
+          <strong class="text-gray-700 font-semibold"> Primera revisión gratuita.</strong>
+        </p>
+
+        <!-- Stars -->
+        <div class="mt-4 flex items-center gap-2 justify-center md:justify-start">
+          <span class="text-yellow-400 text-lg">★★★★½</span>
+          <span class="text-gray-500 text-sm">
+            <strong class="text-gray-900">4.6/5</strong> · 11 reseñas verificadas en Google
+          </span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+          <a href="#contacto"
+             class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-sm hover:bg-blue-700 transition-colors">
+            Pedir cita gratuita
+          </a>
+          <a href="tel:944954956"
+             class="inline-flex items-center justify-center gap-2 border-2 border-gray-900 text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-900 hover:text-white transition-colors">
+            📞 944 95 49 56
+          </a>
+        </div>
+
+        <!-- Mini trust -->
+        <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start text-sm text-gray-500">
+          <span>✓ Sin listas de espera</span>
+          <span>✓ Financiación sin intereses</span>
+          <span>✓ Urgencias el mismo día</span>
+        </div>
+      </div>
+
+      <!-- Right: accordion -->
+      <div class="w-full md:w-1/2 flex justify-center">
+        <div id="accordion" class="flex gap-3 overflow-x-auto p-4">
+          <!-- Panel 1 -->
+          <div class="acc-panel active relative h-[420px] rounded-2xl overflow-hidden cursor-pointer" data-index="0">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffbb172a4df?q=80&w=800&auto=format&fit=crop"
+                 alt="Revisión Dental" class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/380x420/2563eb/ffffff?text=Revisi%C3%B3n'">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <span class="acc-label-h absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-base font-semibold whitespace-nowrap">Revisión y Diagnóstico</span>
+            <span class="acc-label-v absolute bottom-20 left-1/2 -translate-x-1/2 rotate-90 text-white text-sm font-semibold whitespace-nowrap">Revisión</span>
+          </div>
+          <!-- Panel 2 -->
+          <div class="acc-panel relative h-[420px] rounded-2xl overflow-hidden cursor-pointer" data-index="1">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e11?q=80&w=800&auto=format&fit=crop"
+                 alt="Limpieza Dental" class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/380x420/2563eb/ffffff?text=Limpieza'">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <span class="acc-label-h absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-base font-semibold whitespace-nowrap">Limpieza Dental</span>
+            <span class="acc-label-v absolute bottom-20 left-1/2 -translate-x-1/2 rotate-90 text-white text-sm font-semibold whitespace-nowrap">Limpieza</span>
+          </div>
+          <!-- Panel 3 -->
+          <div class="acc-panel relative h-[420px] rounded-2xl overflow-hidden cursor-pointer" data-index="2">
+            <img src="https://images.unsplash.com/photo-1609207925529-77e48e4ad1d2?q=80&w=800&auto=format&fit=crop"
+                 alt="Ortodoncia" class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/380x420/2563eb/ffffff?text=Ortodoncia'">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <span class="acc-label-h absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-base font-semibold whitespace-nowrap">Ortodoncia</span>
+            <span class="acc-label-v absolute bottom-20 left-1/2 -translate-x-1/2 rotate-90 text-white text-sm font-semibold whitespace-nowrap">Ortodoncia</span>
+          </div>
+          <!-- Panel 4 -->
+          <div class="acc-panel relative h-[420px] rounded-2xl overflow-hidden cursor-pointer" data-index="3">
+            <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?q=80&w=800&auto=format&fit=crop"
+                 alt="Implantes" class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/380x420/2563eb/ffffff?text=Implantes'">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <span class="acc-label-h absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-base font-semibold whitespace-nowrap">Implantes Dentales</span>
+            <span class="acc-label-v absolute bottom-20 left-1/2 -translate-x-1/2 rotate-90 text-white text-sm font-semibold whitespace-nowrap">Implantes</span>
+          </div>
+          <!-- Panel 5 -->
+          <div class="acc-panel relative h-[420px] rounded-2xl overflow-hidden cursor-pointer" data-index="4">
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=800&auto=format&fit=crop"
+                 alt="Blanqueamiento" class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/380x420/2563eb/ffffff?text=Blanqueamiento'">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <span class="acc-label-h absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-base font-semibold whitespace-nowrap">Blanqueamiento</span>
+            <span class="acc-label-v absolute bottom-20 left-1/2 -translate-x-1/2 rotate-90 text-white text-sm font-semibold whitespace-nowrap">Blanqueo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     3. TRUST BAR
+     ============================================================ -->
+<div class="bg-blue-600 py-4">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-white text-sm font-medium">
+      <span class="flex items-center gap-1.5">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        Primera revisión gratuita
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        Presupuesto sin compromiso
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        Financiación sin intereses
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        Urgencias atendidas el mismo día
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     4. SERVICES / TRATAMIENTOS
+     ============================================================ -->
+<section id="tratamientos" class="bg-gray-50 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">Tratamientos</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Nuestros Tratamientos</h2>
+      <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">Todo lo que tu boca necesita, en un solo lugar. Trabajamos con los mejores materiales y la última tecnología.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- Service 1 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">🔍</div>
+        <h3 class="font-bold text-gray-900 mb-2">Revisión y Diagnóstico</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Exploración completa con radiografías digitales. Detectamos cualquier problema a tiempo antes de que avance.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €50</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">✨</div>
+        <h3 class="font-bold text-gray-900 mb-2">Limpieza Dental</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Eliminamos el sarro y la placa bacteriana con ultrasonidos para unas encías sanas y un aliento fresco.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €60</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">😁</div>
+        <h3 class="font-bold text-gray-900 mb-2">Ortodoncia</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Corregimos la posición de tus dientes con brackets metálicos, de zafiro o alineadores invisibles tipo Invisalign.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €1.800</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mb-4">🔩</div>
+        <h3 class="font-bold text-gray-900 mb-2">Implantes Dentales</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Reemplazamos dientes perdidos con implantes de titanio de máxima calidad. La solución definitiva con garantía de por vida.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €950</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center text-2xl mb-4">🌟</div>
+        <h3 class="font-bold text-gray-900 mb-2">Blanqueamiento Dental</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Aclaramos el tono de tus dientes hasta 8 tonos de forma segura y controlada. Resultados visibles desde la primera sesión.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €250</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl mb-4">💉</div>
+        <h3 class="font-bold text-gray-900 mb-2">Endodoncia</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Tratamos infecciones del nervio dental para salvar tu diente. Técnica prácticamente indolora con anestesia moderna.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €150</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 7 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mb-4">💎</div>
+        <h3 class="font-bold text-gray-900 mb-2">Estética Dental</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Carillas de porcelana o composite, coronas y recontornado dental para conseguir la sonrisa que siempre has querido.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €280</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+      <!-- Service 8 -->
+      <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-2xl mb-4">🧒</div>
+        <h3 class="font-bold text-gray-900 mb-2">Odontopediatría</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Cuidamos la salud dental de los más pequeños en un ambiente tranquilo y adaptado, desde su primera muela.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-blue-600 font-bold text-sm">Desde €40</span>
+          <a href="#contacto" class="text-xs text-gray-400 hover:text-blue-600 transition-colors">Pedir cita →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5. PRICING
+     ============================================================ -->
+<section id="precios" class="bg-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">Servicios y Tarifas</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Precios Claros, Sin Sorpresas</h2>
+      <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">Presupuesto personalizado y gratuito antes de empezar cualquier tratamiento. Sin letras pequeñas.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+      <!-- Card 1: Básico -->
+      <div class="flex flex-col rounded-xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-center mb-6">
+          <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">Básico</span>
+          <p class="text-3xl font-extrabold text-gray-900 mb-1">€90</p>
+          <p class="text-sm text-gray-500 font-medium">Revisión + Limpieza</p>
+          <p class="text-xs text-gray-400 mt-2">El pack más recomendado para mantener tu salud bucal al día.</p>
+        </div>
+        <hr class="border-gray-100 mb-5" />
+        <ul class="space-y-3 flex-1">
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Exploración bucal completa</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Limpieza profesional con ultrasonidos</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Radiografía de diagnóstico incluida</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Plan de higiene personalizado</li>
+        </ul>
+        <a href="#contacto" class="mt-7 block text-center border-2 border-blue-600 text-blue-600 font-semibold py-2.5 rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-sm">Reservar cita</a>
+      </div>
+
+      <!-- Card 2: Estándar (Featured) -->
+      <div class="flex flex-col rounded-xl border-2 border-blue-600 bg-white p-7 shadow-lg relative">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="bg-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow">⭐ Más popular</span>
+        </div>
+        <div class="text-center mb-6 mt-2">
+          <span class="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">Estándar</span>
+          <p class="text-3xl font-extrabold text-gray-900 mb-1">Desde €1.800</p>
+          <p class="text-sm text-gray-500 font-medium">Tratamiento de Ortodoncia</p>
+          <p class="text-xs text-gray-400 mt-2">Brackets o alineadores para la sonrisa que siempre has querido.</p>
+        </div>
+        <hr class="border-blue-100 mb-5" />
+        <ul class="space-y-3 flex-1">
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Consulta inicial y estudio gratuito</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Brackets metálicos, de zafiro o alineadores</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Revisiones mensuales incluidas</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Retención post-tratamiento incluida</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Financiación hasta 24 meses sin intereses</li>
+        </ul>
+        <a href="#contacto" class="mt-7 block text-center bg-blue-600 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition-colors text-sm shadow-sm">Solicitar estudio gratuito</a>
+      </div>
+
+      <!-- Card 3: Premium -->
+      <div class="flex flex-col rounded-xl border border-gray-200 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
+        <div class="text-center mb-6">
+          <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">Premium</span>
+          <p class="text-3xl font-extrabold text-gray-900 mb-1">Desde €950</p>
+          <p class="text-sm text-gray-500 font-medium">Implante Dental</p>
+          <p class="text-xs text-gray-400 mt-2">La solución definitiva para un diente perdido, natural y duradera.</p>
+        </div>
+        <hr class="border-gray-100 mb-5" />
+        <ul class="space-y-3 flex-1">
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Escáner 3D y planificación digital</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Implante de titanio de grado médico</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Corona de porcelana personalizada</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Garantía de por vida del implante</li>
+          <li class="flex items-center gap-2.5 text-sm text-gray-600"><svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Financiación hasta 24 meses sin intereses</li>
+        </ul>
+        <a href="#contacto" class="mt-7 block text-center border-2 border-blue-600 text-blue-600 font-semibold py-2.5 rounded-lg hover:bg-blue-600 hover:text-white transition-colors text-sm">Pedir presupuesto</a>
+      </div>
+
+    </div>
+    <p class="text-center text-xs text-gray-400 mt-6">* Precios orientativos. El presupuesto definitivo se realiza tras la revisión gratuita. IVA incluido.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6. STATS BANNER
+     ============================================================ -->
+<div class="bg-blue-600 py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+      <div>
+        <p class="text-4xl font-extrabold">+500</p>
+        <p class="text-blue-200 text-sm mt-1 font-medium">Pacientes atendidos</p>
+      </div>
+      <div>
+        <p class="text-4xl font-extrabold">4+</p>
+        <p class="text-blue-200 text-sm mt-1 font-medium">Años en Sestao</p>
+      </div>
+      <div>
+        <p class="text-4xl font-extrabold">4.6★</p>
+        <p class="text-blue-200 text-sm mt-1 font-medium">Valoración en Google</p>
+      </div>
+      <div>
+        <p class="text-4xl font-extrabold">€0</p>
+        <p class="text-blue-200 text-sm mt-1 font-medium">Primera revisión</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     7. TESTIMONIALS
+     ============================================================ -->
+<section id="resenas" class="bg-gray-50 py-16 md:py-24 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">Reseñas de Google</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Lo que dicen nuestros pacientes</h2>
+      <div class="flex items-center justify-center gap-2 mt-4">
+        <span class="text-yellow-400 text-xl">★★★★½</span>
+        <span class="font-bold text-gray-900">4.6/5</span>
+        <span class="text-gray-300">·</span>
+        <span class="text-gray-500 text-sm">11 reseñas verificadas</span>
+      </div>
+    </div>
+
+    <!-- Slider wrapper -->
+    <div class="relative">
+      <div class="overflow-hidden" id="testimonial-viewport">
+        <div class="testimonial-track" id="testimonial-track">
+
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card px-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 h-full">
+              <div class="flex mb-3 text-yellow-400 text-sm">★★★★★</div>
+              <p class="text-sm text-gray-600 leading-relaxed flex-1">
+                &ldquo;Buen servicio. Buenas profesionales, atentas, rápidas y con decisión. Además son muy simpáticas y amables. Llevo yendo a su consulta más de 4 años y siempre salgo satisfecho con las revisiones y las limpiezas. Gracias.&rdquo;
+              </p>
+              <div class="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">D</div>
+                  <div>
+                    <p class="font-semibold text-sm text-gray-900">David G.S.</p>
+                    <p class="text-xs text-gray-400">Hace un año</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-400">Google</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card px-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 h-full">
+              <div class="flex mb-3 text-yellow-400 text-sm">★★★★★</div>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                &ldquo;Estoy sintiendo dolor y necesito que alguien se mantenga en contacto conmigo por WhatsApp.&rdquo;
+              </p>
+              <div class="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm">R</div>
+                  <div>
+                    <p class="font-semibold text-sm text-gray-900">Reda Afahsi</p>
+                    <p class="text-xs text-gray-400">Hace 3 meses</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-400">Google</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card px-3">
+            <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-6 h-full">
+              <div class="flex mb-3 text-yellow-400 text-sm">★★★★★</div>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                &ldquo;Un trato increíble y cercano, muy preocupadas por hacerte sentir lo más cómodo e informado de cada intervención posible, 10/10 en todo.&rdquo;
+              </p>
+              <div class="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm">A</div>
+                  <div>
+                    <p class="font-semibold text-sm text-gray-900">Aritz Aguiar Basabe</p>
+                    <p class="text-xs text-gray-400">Hace un año</p>
+                  </div>
+                </div>
+                <span class="text-xs text-gray-400">Google</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-4 mt-8">
+        <button id="prev-btn" class="p-2.5 rounded-full border border-gray-200 bg-white shadow-sm hover:border-blue-600 text-blue-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+        </button>
+        <div id="dots" class="flex gap-2"></div>
+        <button id="next-btn" class="p-2.5 rounded-full border border-gray-200 bg-white shadow-sm hover:border-blue-600 text-blue-600 transition-colors">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     8. FAQ
+     ============================================================ -->
+<section id="faq" class="bg-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">Preguntas Frecuentes</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Todo lo que necesitas saber</h2>
+      <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">¿Tienes dudas? Aquí respondemos las preguntas más habituales de nuestros pacientes.</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-3" id="faq-list">
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿La primera revisión es realmente gratuita?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Sí, la primera revisión y el presupuesto son completamente gratuitos y sin ningún compromiso. Queremos que te sientas cómodo y conozcas a nuestro equipo antes de tomar cualquier decisión. Solo tienes que llamar o rellenar el formulario de contacto.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Necesito pedir cita o puedo ir sin cita?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Trabajamos exclusivamente con cita previa para garantizarte la atención que mereces, sin esperas. Puedes pedir cita llamando al <a href="tel:944954956" class="text-blue-600 hover:underline">944 95 49 56</a> o a través del formulario de contacto de esta página.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Atendéis urgencias dentales?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Sí. Si tienes dolor intenso, una pieza rota o cualquier urgencia dental, llámanos nada más abrir (a partir de las 9:30 h, de lunes a viernes) y haremos todo lo posible por atenderte ese mismo día sin demora.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Ofrecéis financiación para tratamientos costosos?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Sí, disponemos de financiación sin intereses para ortodoncia, implantes y otros tratamientos de mayor importe. Podemos fraccionar el pago en hasta 24 meses. Consúltanos y adaptamos el plan a tu presupuesto sin compromiso.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Trabajáis con seguros dentales?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Trabajamos con las principales compañías de seguros dentales. Tráenos tu tarjeta o póliza y verificamos tu cobertura sin coste alguno antes de comenzar cualquier tratamiento.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Cuánto dura un tratamiento de ortodoncia?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Depende de cada caso, pero los tratamientos suelen durar entre 12 y 24 meses. Tras el estudio ortodóncico gratuito te daremos un diagnóstico preciso con la duración estimada y el presupuesto exacto, sin letras pequeñas.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Los tratamientos son dolorosos?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          Utilizamos anestesia local de última generación que hace que los tratamientos sean prácticamente indoloros. Las revisiones y limpiezas no requieren anestesia. Nuestros pacientes habitualmente nos dicen que la experiencia fue mucho más cómoda de lo esperado.
+        </div>
+      </div>
+
+      <div class="faq-item bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-trigger w-full flex items-center justify-between px-6 py-5 text-left font-semibold text-gray-900 hover:text-blue-600 transition-colors">
+          <span>¿Tenéis aparcamiento cerca de la clínica?</span>
+          <svg class="faq-arrow h-5 w-5 text-gray-400 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </button>
+        <div class="faq-body px-6 text-sm text-gray-500 leading-relaxed">
+          La clínica está situada en la Gran Vía de Sestao, donde hay disponibilidad de aparcamiento en la propia calle y zonas aledañas. También estamos muy bien comunicados con transporte público (metro, autobús).
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     9. LOCATION / MAP
+     ============================================================ -->
+<section class="bg-gray-50 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">Encuéntranos</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Cómo Llegar</h2>
+      <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">Estamos en el corazón de Sestao, fácilmente accesibles en coche y transporte público.</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-10 items-start">
+
+      <!-- Info column -->
+      <div class="w-full lg:w-2/5 space-y-6">
+
+        <div class="flex items-start gap-4">
+          <div class="bg-blue-50 p-3 rounded-xl shrink-0">
+            <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Dirección</h3>
+            <p class="text-gray-500 text-sm">Gran Vía de Jose Antonio Agirre y Lekube Kalea, 25<br>48910 Sestao, Bizkaia</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="bg-blue-50 p-3 rounded-xl shrink-0">
+            <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-1">Teléfono</h3>
+            <a href="tel:944954956" class="text-blue-600 hover:underline text-sm font-medium">944 95 49 56</a>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="bg-blue-50 p-3 rounded-xl shrink-0">
+            <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">Horario</h3>
+            <table class="text-sm w-full">
+              <tbody>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5 w-24">Lunes</td>   <td class="text-gray-500">9:30–14:00 · 16:00–20:00</td></tr>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5">Martes</td>  <td class="text-gray-500">9:30–14:00 · 16:00–20:00</td></tr>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5">Miércoles</td><td class="text-gray-500">9:30–14:00 · 16:00–20:00</td></tr>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5">Jueves</td>  <td class="text-gray-500">9:30–14:00 · 16:00–20:00</td></tr>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5">Viernes</td> <td class="text-gray-500">9:30–14:00 · 16:00–20:00</td></tr>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5">Sábado</td>  <td class="text-red-400">Cerrado</td></tr>
+                <tr><td class="text-gray-700 font-medium pr-4 py-0.5">Domingo</td> <td class="text-red-400">Cerrado</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Gran+Via+de+Jose+Antonio+Agirre+y+Lekube+Kalea+25+48910+Sestao+Bizkaia"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-sm hover:bg-blue-700 transition-colors text-sm w-full sm:w-auto">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          Ver en Google Maps
+        </a>
+      </div>
+
+      <!-- Map embed -->
+      <div class="w-full lg:w-3/5 rounded-2xl overflow-hidden shadow-md border border-gray-200 h-72 lg:h-96">
+        <iframe
+          title="Clínica Dental Sestao en Google Maps"
+          src="https://maps.google.com/maps?q=Gran+Via+de+Jose+Antonio+Agirre+y+Lekube+Kalea+25+48910+Sestao+Bizkaia&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     10. CONTACT FORM
+     ============================================================ -->
+<section id="contacto" class="bg-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-700 text-sm font-medium tracking-wide mb-4">Contacto</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Pide tu Cita</h2>
+      <p class="text-lg text-gray-500 mt-4 max-w-2xl mx-auto">Rellena el formulario y nos pondremos en contacto contigo en menos de 1 día laborable.</p>
+    </div>
+
+    <div class="border rounded-xl shadow-sm grid md:grid-cols-2 lg:grid-cols-3 relative overflow-hidden">
+      <!-- Plus corners -->
+      <span class="absolute -top-3 -left-3 text-gray-300 text-2xl font-bold leading-none">+</span>
+      <span class="absolute -top-3 -right-3 text-gray-300 text-2xl font-bold leading-none">+</span>
+      <span class="absolute -bottom-3 -left-3 text-gray-300 text-2xl font-bold leading-none">+</span>
+      <span class="absolute -bottom-3 -right-3 text-gray-300 text-2xl font-bold leading-none">+</span>
+
+      <!-- Left: info -->
+      <div class="lg:col-span-2 p-8 space-y-5">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900">¿En qué podemos ayudarte?</h3>
+        <p class="text-gray-500 text-sm leading-relaxed max-w-md">Cuéntanos qué necesitas y nuestro equipo se pondrá en contacto contigo lo antes posible para confirmar tu cita.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+          <div class="flex items-center gap-3">
+            <div class="bg-gray-100 rounded-lg p-3"><svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg></div>
+            <div><p class="font-medium text-sm">Teléfono</p><p class="text-gray-400 text-xs">944 95 49 56</p></div>
+          </div>
+          <div class="flex items-center gap-3 sm:col-span-2 lg:col-span-2">
+            <div class="bg-gray-100 rounded-lg p-3 shrink-0"><svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+            <div><p class="font-medium text-sm">Dirección</p><p class="text-gray-400 text-xs">Gran Vía J.A. Agirre, 25 · 48910 Sestao</p></div>
+          </div>
+          <div class="flex items-center gap-3 sm:col-span-2 lg:col-span-3">
+            <div class="bg-gray-100 rounded-lg p-3 shrink-0"><svg class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            <div><p class="font-medium text-sm">Horario</p><p class="text-gray-400 text-xs">Lun–Vie: 9:30–14:00 y 16:00–20:00</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="bg-gray-50 border-t md:border-t-0 md:border-l p-6 flex items-center">
+        <form class="w-full space-y-4" onsubmit="handleSubmit(event)">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Nombre *</label>
+            <input id="name" type="text" required placeholder="Tu nombre completo"
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="email">Email *</label>
+            <input id="email" type="email" required placeholder="tu@email.com"
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="phone">Teléfono</label>
+            <input id="phone" type="tel" placeholder="600 000 000"
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="service">Tratamiento de interés</label>
+            <select id="service"
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition">
+              <option value="">Seleccionar tratamiento...</option>
+              <option>Revisión y Diagnóstico (gratuita)</option>
+              <option>Limpieza Dental</option>
+              <option>Ortodoncia</option>
+              <option>Implantes Dentales</option>
+              <option>Blanqueamiento</option>
+              <option>Endodoncia</option>
+              <option>Estética Dental</option>
+              <option>Odontopediatría</option>
+              <option>Urgencia dental</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="message">Mensaje</label>
+            <textarea id="message" rows="3" placeholder="Cuéntanos qué necesitas o cuándo prefieres que te llamemos..."
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition resize-none"></textarea>
+          </div>
+          <div class="flex items-start gap-2">
+            <input type="checkbox" id="consent" required class="mt-0.5 accent-blue-600 shrink-0" />
+            <label for="consent" class="text-xs text-gray-500">He leído y acepto la <a href="#" class="text-blue-600 hover:underline">Política de Privacidad</a> y consiento el tratamiento de mis datos para gestionar mi solicitud de cita. *</label>
+          </div>
+          <button type="submit"
+            class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-sm text-sm">
+            Enviar solicitud de cita
+          </button>
+          <p id="form-success" class="hidden text-center text-sm text-green-600 font-medium">✓ ¡Solicitud enviada! Nos pondremos en contacto contigo pronto.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     11. FOOTER
+     ============================================================ -->
+<footer class="bg-gray-50 border-t border-gray-100 pt-16 pb-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+    <!-- Top row -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-200">
+
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <a href="#inicio" class="flex items-center gap-2 mb-3">
+          <span class="text-2xl">🦷</span>
+          <span class="font-bold text-gray-900">Clínica Dental Sestao</span>
+        </a>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4">Tu sonrisa en buenas manos. Clínica dental de confianza en el corazón de Sestao, Bizkaia.</p>
+        <div class="flex gap-3">
+          <a href="#" aria-label="Facebook" class="w-9 h-9 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600 transition-colors">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="w-9 h-9 bg-white border border-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600 transition-colors">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tratamientos -->
+      <div>
+        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Tratamientos</h4>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li><a href="#tratamientos" class="hover:text-blue-600 transition-colors">Revisión y Diagnóstico</a></li>
+          <li><a href="#tratamientos" class="hover:text-blue-600 transition-colors">Limpieza Dental</a></li>
+          <li><a href="#tratamientos" class="hover:text-blue-600 transition-colors">Ortodoncia</a></li>
+          <li><a href="#tratamientos" class="hover:text-blue-600 transition-colors">Implantes Dentales</a></li>
+          <li><a href="#tratamientos" class="hover:text-blue-600 transition-colors">Blanqueamiento</a></li>
+          <li><a href="#tratamientos" class="hover:text-blue-600 transition-colors">Estética Dental</a></li>
+        </ul>
+      </div>
+
+      <!-- La Clínica -->
+      <div>
+        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">La Clínica</h4>
+        <ul class="space-y-2.5 text-sm text-gray-500">
+          <li><a href="#inicio"       class="hover:text-blue-600 transition-colors">Inicio</a></li>
+          <li><a href="#precios"      class="hover:text-blue-600 transition-colors">Precios</a></li>
+          <li><a href="#resenas"      class="hover:text-blue-600 transition-colors">Reseñas</a></li>
+          <li><a href="#faq"          class="hover:text-blue-600 transition-colors">Preguntas frecuentes</a></li>
+          <li><a href="#contacto"     class="hover:text-blue-600 transition-colors">Pedir cita</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h4 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Contacto</h4>
+        <ul class="space-y-3 text-sm text-gray-500">
+          <li class="flex items-start gap-2">
+            <svg class="h-4 w-4 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            <span>Gran Vía J.A. Agirre, 25<br>48910 Sestao, Bizkaia</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <a href="tel:944954956" class="hover:text-blue-600 transition-colors">944 95 49 56</a>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="h-4 w-4 text-blue-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Lun–Vie: 9:30–14:00<br>y 16:00–20:00</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom row -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6">
+      <p class="text-sm text-gray-400">© 2024 Clínica Dental Sestao · Todos los derechos reservados</p>
+      <div class="flex gap-5 text-sm text-gray-400">
+        <a href="#" class="hover:text-blue-600 transition-colors">Política de Privacidad</a>
+        <a href="#" class="hover:text-blue-600 transition-colors">Aviso Legal</a>
+        <a href="#" class="hover:text-blue-600 transition-colors">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+  // --- Mobile menu toggle ---
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+  });
+  // Close mobile menu on link click
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('hidden');
+    });
+  });
+
+  // --- Nav shadow on scroll ---
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) navbar.classList.add('nav-scrolled');
+    else navbar.classList.remove('nav-scrolled');
+  });
+
+  // --- Hero accordion ---
+  const panels = document.querySelectorAll('.acc-panel');
+  panels.forEach((panel, i) => {
+    panel.addEventListener('mouseenter', () => {
+      panels.forEach(p => p.classList.remove('active'));
+      panel.classList.add('active');
+    });
+  });
+
+  // --- FAQ accordion ---
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-trigger').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // --- Testimonial slider ---
+  const track = document.getElementById('testimonial-track');
+  const dotsContainer = document.getElementById('dots');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const cards = track.querySelectorAll('.testimonial-card');
+
+  let currentSlide = 0;
+  let visibleCount = getVisible();
+
+  function getVisible() {
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768)  return 2;
+    return 1;
+  }
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    const count = cards.length - visibleCount + 1;
+    for (let i = 0; i < count; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'dot h-2 rounded-full bg-gray-300 transition-all duration-300';
+      dot.style.width = i === currentSlide ? '20px' : '8px';
+      dot.style.backgroundColor = i === currentSlide ? '#2563eb' : '#d1d5db';
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    const maxIndex = cards.length - visibleCount;
+    currentSlide = Math.max(0, Math.min(index, maxIndex));
+    const pct = currentSlide * (100 / visibleCount);
+    track.style.transform = `translateX(-${pct}%)`;
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide >= maxIndex;
+    buildDots();
+  }
+
+  prevBtn.addEventListener('click', () => goTo(currentSlide - 1));
+  nextBtn.addEventListener('click', () => goTo(currentSlide + 1));
+
+  window.addEventListener('resize', () => {
+    visibleCount = getVisible();
+    goTo(Math.min(currentSlide, cards.length - visibleCount));
+  });
+
+  goTo(0);
+
+  // Auto-play testimonials
+  let autoPlay = setInterval(() => {
+    const max = cards.length - visibleCount;
+    goTo(currentSlide < max ? currentSlide + 1 : 0);
+  }, 4500);
+  track.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  track.addEventListener('mouseleave', () => {
+    autoPlay = setInterval(() => {
+      const max = cards.length - visibleCount;
+      goTo(currentSlide < max ? currentSlide + 1 : 0);
+    }, 4500);
+  });
+
+  // --- Contact form ---
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('form-success').classList.remove('hidden');
+    e.target.querySelectorAll('input, textarea, select, button[type=submit]').forEach(el => el.disabled = true);
+  }
+</script>
+
+</body>
+</html>
