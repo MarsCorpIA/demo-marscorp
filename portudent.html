@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PorTUDent — Clínica Dental Portugalete</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d1f3c;
+  --navy-light: #1a3160;
+  --orange: #e8601c;
+  --orange-light: #ff7a35;
+  --blue: #1e6fb5;
+  --blue-light: #3d8fd4;
+  --cream: #faf8f5;
+  --white: #ffffff;
+  --gray: #6b7280;
+  --gray-light: #f3f4f6;
+  --text: #1a1a2e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 70px;
+  background: rgba(13, 31, 60, 0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.nav-logo-text span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--orange); }
+
+.nav-cta {
+  background: var(--orange);
+  color: white !important;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-weight: 500 !important;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--orange-light) !important; color: white !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ── HERO ── */
+#inicio {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 70px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(30, 111, 181, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(232, 96, 28, 0.08) 0%, transparent 60%);
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 5% 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232, 96, 28, 0.15);
+  border: 1px solid rgba(232, 96, 28, 0.3);
+  color: var(--orange-light);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s 0.1s ease both;
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--orange);
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+  animation: fadeInUp 0.6s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orange);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(232, 96, 28, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232, 96, 28, 0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  animation: fadeInUp 0.6s 0.4s ease both;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.hero-stat-num span { color: var(--orange); }
+
+.hero-stat-label {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+
+.hero-image-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeInRight 0.8s 0.2s ease both;
+}
+
+.hero-img-main {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid rgba(255,255,255,0.08);
+}
+
+.hero-img-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.hero-img-small {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.08);
+  background: var(--navy-light);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── SECCIÓN BASE ── */
+section { padding: 5rem 5%; }
+
+.section-inner { max-width: 1200px; margin: 0 auto; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 3rem;
+}
+
+/* ── TRATAMIENTOS ── */
+#tratamientos { background: var(--cream); }
+
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.treatment-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.treatment-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.treatment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+}
+
+.treatment-card:hover::before { transform: scaleX(1); }
+
+.treatment-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(30, 111, 181, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.treatment-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--navy);
+  margin-bottom: 0.6rem;
+}
+
+.treatment-desc {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+/* ── PRECIOS ── */
+#precios { background: var(--white); }
+
+.prices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.price-card {
+  background: var(--cream);
+  border-radius: 14px;
+  padding: 1.75rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.25s;
+}
+
+.price-card:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 24px rgba(232,96,28,0.1);
+}
+
+.price-card.featured {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.price-service {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.price-card.featured .price-service { color: rgba(255,255,255,0.8); }
+
+.price-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  color: var(--orange);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.price-note {
+  font-size: 0.78rem;
+  color: var(--gray);
+  margin-top: 6px;
+}
+
+.price-card.featured .price-note { color: rgba(255,255,255,0.45); }
+
+.prices-disclaimer {
+  background: rgba(30, 111, 181, 0.06);
+  border: 1px solid rgba(30, 111, 181, 0.15);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+.prices-disclaimer strong { color: var(--navy); }
+
+/* ── RESEÑAS ── */
+#reseñas { background: var(--navy); }
+
+#reseñas .section-title { color: var(--white); }
+#reseñas .section-tag { color: var(--orange-light); }
+#reseñas .section-subtitle { color: rgba(255,255,255,0.55); }
+
+.rating-hero {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  flex-wrap: wrap;
+}
+
+.rating-hero > div:last-child {
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .rating-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .rating-hero > div:last-child {
+    margin-left: 0;
+    width: 100%;
+  }
+  .rating-hero > div:last-child a {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
+
+.rating-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rating-big span { color: var(--orange); }
+
+.rating-stars { font-size: 1.4rem; margin-bottom: 4px; }
+
+.rating-count { font-size: 0.88rem; color: rgba(255,255,255,0.5); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.review-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: all 0.3s;
+}
+
+.review-card:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-3px);
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.review-name {
+  font-weight: 500;
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.review-date { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+.review-stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+.review-text {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ── FAQ ── */
+#faq { background: var(--cream); }
+
+.faq-list { max-width: 760px; }
+
+.faq-item {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--navy);
+  gap: 1rem;
+  transition: color 0.2s;
+  user-select: none;
+}
+
+.faq-question:hover { color: var(--orange); }
+
+.faq-icon {
+  width: 28px;
+  height: 28px;
+  background: rgba(232,96,28,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--orange);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+
+.faq-item.open .faq-answer { max-height: 300px; }
+
+.faq-answer-inner {
+  padding-bottom: 1.25rem;
+  font-size: 0.93rem;
+  color: var(--gray);
+  line-height: 1.75;
+}
+
+/* ── COMO LLEGAR ── */
+#como-llegar { background: var(--white); }
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.location-info { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--cream);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.location-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(232, 96, 28, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.location-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+
+.location-value {
+  font-size: 0.92rem;
+  color: var(--navy);
+  line-height: 1.55;
+}
+
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 380px;
+  border: none;
+  display: block;
+}
+
+/* ── HORARIO ── */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.schedule-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.83rem;
+}
+
+.schedule-row:nth-child(odd) { background: rgba(0,0,0,0.03); }
+
+.schedule-day { color: var(--gray); font-weight: 400; }
+
+.schedule-time { color: var(--navy); font-weight: 500; font-size: 0.8rem; }
+
+.schedule-row.closed .schedule-time { color: #e03030; }
+
+/* ── CONTACTO ── */
+#contacto { background: var(--navy); position: relative; overflow: hidden; }
+
+#contacto::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(232,96,28,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#contacto .section-title { color: var(--white); }
+#contacto .section-tag { color: var(--orange-light); }
+#contacto .section-subtitle { color: rgba(255,255,255,0.55); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-channels { display: flex; flex-direction: column; gap: 1rem; }
+
+.contact-channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.contact-channel:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--orange);
+  transform: translateX(4px);
+}
+
+.channel-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.channel-icon.whatsapp { background: rgba(37, 211, 102, 0.15); }
+.channel-icon.phone { background: rgba(30, 111, 181, 0.2); }
+.channel-icon.email { background: rgba(232, 96, 28, 0.15); }
+
+.channel-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
+.channel-value { font-weight: 500; color: var(--white); font-size: 0.95rem; }
+
+.contact-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.form-group { margin-bottom: 1.1rem; }
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 11px 14px;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--orange);
+  background: rgba(255,255,255,0.08);
+}
+
+.form-textarea { resize: vertical; min-height: 100px; }
+
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+.form-submit {
+  width: 100%;
+  background: var(--orange);
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.form-submit:hover {
+  background: var(--orange-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232,96,28,0.35);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #06111f;
+  padding: 2rem 5%;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--white);
+}
+
+.footer-logo span { color: var(--orange); }
+
+.footer-text {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--orange); }
+
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-image-side { display: none; }
+  .location-grid, .contact-grid { grid-template-columns: 1fr; }
+  .schedule-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  section { padding: 3.5rem 5%; }
+  .hero-stats { gap: 1.5rem; }
+  .hero-stat-num { font-size: 1.6rem; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .prices-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+    <span class="nav-logo-text">Por<span>TU</span>Dent</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#tratamientos">Tratamientos</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#reseñas">Reseñas</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#como-llegar">Cómo llegar</a></li>
+    <li><a href="#contacto" class="nav-cta">Pedir cita</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Clínica Dental en Portugalete</div>
+      <h1 class="hero-title">Tu sonrisa merece<br><em>los mejores cuidados</em></h1>
+      <p class="hero-subtitle">En PorTUDent llevamos años devolviendo la confianza a quienes le tienen miedo al dentista. Experiencia, cercanía y precios razonables en el corazón de Portugalete.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          📅 Pedir cita
+        </a>
+        <a href="tel:944934141" class="btn-secondary">
+          📞 944 93 41 41
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4<span>.9</span></div>
+          <div class="hero-stat-label">Valoración Google</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">41</div>
+          <div class="hero-stat-label">Reseñas verificadas</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">+<span>20</span></div>
+          <div class="hero-stat-label">Años de experiencia</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-side">
+      <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Clínica Dental PorTUDent" class="hero-img-main">
+      <div class="hero-img-row">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=80" alt="Consulta dental moderna" class="hero-img-small">
+        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80" alt="Sala de rayos X" class="hero-img-small">
+        <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&q=80" alt="Equipo dental profesional" class="hero-img-small">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos">
+  <div class="section-inner">
+    <span class="section-tag reveal">Nuestros servicios</span>
+    <h2 class="section-title reveal">Tratamientos para toda la familia</h2>
+    <p class="section-subtitle reveal">Desde revisiones rutinarias hasta tratamientos avanzados, cubrimos todas las necesidades de tu salud bucodental.</p>
+    <div class="treatments-grid">
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">🦷</div>
+        <h3 class="treatment-name">Implantes Dentales</h3>
+        <p class="treatment-desc">Recupera tu sonrisa completa con implantes de titanio de alta calidad. Solución definitiva y natural para dientes perdidos.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">✨</div>
+        <h3 class="treatment-name">Blanqueamiento Dental</h3>
+        <p class="treatment-desc">Tratamiento profesional para una sonrisa más blanca y luminosa. Resultados visibles desde la primera sesión.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">🔬</div>
+        <h3 class="treatment-name">Ortodoncia</h3>
+        <p class="treatment-desc">Corrección de maloclusiones con brackets tradicionales o alineadores transparentes. Para niños, jóvenes y adultos.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">🛡️</div>
+        <h3 class="treatment-name">Endodoncia</h3>
+        <p class="treatment-desc">Tratamiento de conductos para salvar dientes con infección profunda. Sin dolor gracias a nuestra anestesia avanzada.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">👶</div>
+        <h3 class="treatment-name">Odontología Infantil</h3>
+        <p class="treatment-desc">Cuidamos los dientes de los más pequeños en un ambiente amigable y sin miedo. Prevención desde la primera visita.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">🏥</div>
+        <h3 class="treatment-name">Periodoncia</h3>
+        <p class="treatment-desc">Tratamiento de encías y estructuras de soporte dental. Prevenimos y tratamos la enfermedad periodontal.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">💊</div>
+        <h3 class="treatment-name">Prótesis Dentales</h3>
+        <p class="treatment-desc">Prótesis fijas y removibles a medida para recuperar funcionalidad y estética de forma duradera.</p>
+      </div>
+      <div class="treatment-card reveal">
+        <div class="treatment-icon">🔍</div>
+        <h3 class="treatment-name">Revisiones y Limpieza</h3>
+        <p class="treatment-desc">Revisiones periódicas y limpiezas profesionales para mantener tu salud bucodental en óptimas condiciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="section-inner">
+    <span class="section-tag reveal">Tarifas orientativas</span>
+    <h2 class="section-title reveal">Precios razonables, calidad sin compromiso</h2>
+    <p class="section-subtitle reveal">En PorTUDent creemos que una buena salud dental debe ser accesible. Ofrecemos presupuestos personalizados y facilidades de pago.</p>
+    <div class="prices-grid reveal">
+      <div class="price-card">
+        <div class="price-service">Revisión + Radiografía</div>
+        <div class="price-value">Desde 30€</div>
+        <div class="price-note">Primera visita incluida</div>
+      </div>
+      <div class="price-card">
+        <div class="price-service">Limpieza Bucal Profesional</div>
+        <div class="price-value">Desde 50€</div>
+        <div class="price-note">Con ultrasonidos</div>
+      </div>
+      <div class="price-card">
+        <div class="price-service">Blanqueamiento Dental</div>
+        <div class="price-value">Desde 180€</div>
+        <div class="price-note">Tratamiento completo</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-service">Implante Dental</div>
+        <div class="price-value">Desde 800€</div>
+        <div class="price-note">Implante + corona incluida</div>
+      </div>
+      <div class="price-card">
+        <div class="price-service">Ortodoncia</div>
+        <div class="price-value">Desde 1.200€</div>
+        <div class="price-note">Con financiación disponible</div>
+      </div>
+      <div class="price-card">
+        <div class="price-service">Endodoncia</div>
+        <div class="price-value">Desde 150€</div>
+        <div class="price-note">Según complejidad</div>
+      </div>
+    </div>
+    <div class="prices-disclaimer reveal">
+      <strong>Nota importante:</strong> Los precios mostrados son orientativos y pueden variar según la situación clínica de cada paciente. <strong>La primera consulta y valoración es gratuita.</strong> Contacta con nosotros para recibir un presupuesto personalizado sin compromiso. Ofrecemos facilidades de pago y financiación para tratamientos de mayor coste.
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="reseñas">
+  <div class="section-inner">
+    <span class="section-tag reveal">Opiniones reales</span>
+    <h2 class="section-title reveal">Lo que dicen nuestros pacientes</h2>
+    <p class="section-subtitle reveal">Más de 41 reseñas verificadas en Google. La confianza de nuestros pacientes es nuestro mayor orgullo.</p>
+    <div class="rating-hero reveal">
+      <div>
+        <div class="rating-big">4<span>.9</span></div>
+      </div>
+      <div>
+        <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+        <div class="rating-count">Basado en 41 reseñas en Google</div>
+      </div>
+      <div>
+        <a href="https://maps.google.com" class="btn-primary" target="_blank" style="font-size:0.85rem; padding: 10px 18px;">
+          Ver todas en Google →
+        </a>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-header">
+          <div class="review-avatar" style="background: linear-gradient(135deg, #667eea, #764ba2);">L</div>
+          <div>
+            <div class="review-name">Laura Fernández</div>
+            <div class="review-date">Guía Local · Hace 3 años</div>
+          </div>
+        </div>
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Después de 30 años he perdido el miedo al dentista. Muy contenta de haber escogido esta clínica. Se nota que tienen muchísima experiencia y cariño por su trabajo, lo que se traduce en un servicio cercano e impecable en todos los sentidos. Los precios son muy razonables también."</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-header">
+          <div class="review-avatar" style="background: linear-gradient(135deg, #f093fb, #f5576c);">S</div>
+          <div>
+            <div class="review-name">Santiago García</div>
+            <div class="review-date">Guía Local · Hace 4 meses</div>
+          </div>
+        </div>
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Buenos profesionales, los recomiendo. Han hecho un trabajo excelente. Trato muy cercano y profesional desde el primer momento. Sin duda volvería y los recomendaría a cualquiera."</p>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-header">
+          <div class="review-avatar" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">A</div>
+          <div>
+            <div class="review-name">Ana Cubias</div>
+            <div class="review-date">Hace 1 año</div>
+          </div>
+        </div>
+        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+        <p class="review-text">"Excelente, una clínica de confianza. Me han puesto implantes dentales. Desde el asesoramiento, la intervención y las diferentes técnicas; un trabajo minucioso para que todo quede perfecto. Tanto Jaime como Maribel son encantadores y muy pendientes en todo el proceso."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <span class="section-tag reveal">Preguntas frecuentes</span>
+    <h2 class="section-title reveal">Todo lo que necesitas saber</h2>
+    <p class="section-subtitle reveal">Resolvemos las dudas más habituales antes de tu primera visita.</p>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Necesito cita previa o puedo ir directamente?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Recomendamos solicitar cita previa para garantizarte atención inmediata y sin esperas. Puedes hacerlo por WhatsApp al 944 93 41 41, por teléfono o a través del formulario de esta web. En caso de urgencia dental, llámanos y te atendemos lo antes posible.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Ofrecéis financiación para tratamientos?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sí. Para tratamientos de mayor coste como implantes u ortodoncia ofrecemos facilidades de pago y financiación personalizada. Consulta las opciones disponibles en tu visita o contáctanos directamente.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Atendéis a niños pequeños?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Por supuesto. Atendemos pacientes de todas las edades, incluidos los más pequeños. Nuestro equipo está especializado en hacer que la primera visita al dentista sea una experiencia positiva para los niños, sin miedo ni estrés.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo dura una primera consulta?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">La primera visita suele durar entre 30 y 60 minutos dependiendo del caso. Realizamos una revisión completa, las radiografías necesarias y te explicamos el plan de tratamiento recomendado con total transparencia.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Trabajáis con seguros dentales?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Trabajamos con los principales seguros dentales del mercado. Consulta si el tuyo está incluido llamándonos o escribiéndonos por WhatsApp. Si no tienes seguro, nuestros precios son muy competitivos y puedes pagar directamente.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué hago si tengo una urgencia dental fuera de horario?
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Puedes escribirnos por WhatsApp al 944 93 41 41 en cualquier momento y te responderemos a la mayor brevedad posible. Para emergencias muy graves fuera de horario, acude al servicio de urgencias de tu hospital de referencia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO LLEGAR -->
+<section id="como-llegar">
+  <div class="section-inner">
+    <span class="section-tag reveal">Ubicación</span>
+    <h2 class="section-title reveal">Cómo llegar a PorTUDent</h2>
+    <p class="section-subtitle reveal">Estamos en el centro de Portugalete, fácilmente accesibles en metro, autobús o a pie.</p>
+    <div class="location-grid">
+      <div class="location-info reveal">
+        <div class="location-item">
+          <div class="location-icon">📍</div>
+          <div>
+            <div class="location-label">Dirección</div>
+            <div class="location-value">General Castaños, 60<br>48920 Portugalete, Vizcaya</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-icon">🚇</div>
+          <div>
+            <div class="location-label">Transporte público</div>
+            <div class="location-value">Metro Bilbao: Estación Portugalete (Línea 2)<br>Renfe Cercanías: Estación Portugalete</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-icon">🅿️</div>
+          <div>
+            <div class="location-label">Aparcamiento</div>
+            <div class="location-value">Parking público disponible en<br>Plaza del Solar (a 3 min a pie)</div>
+          </div>
+        </div>
+        <div class="location-item">
+          <div class="location-icon">🕐</div>
+          <div>
+            <div class="location-label">Horario de atención</div>
+            <div>
+              <div class="schedule-grid">
+                <div class="schedule-row"><span class="schedule-day">Lunes</span><span class="schedule-time">9:30–13:30 / 16:00–20:00</span></div>
+                <div class="schedule-row"><span class="schedule-day">Martes</span><span class="schedule-time">9:30–13:30 / 16:00–20:00</span></div>
+                <div class="schedule-row"><span class="schedule-day">Miércoles</span><span class="schedule-time">9:30–17:00</span></div>
+                <div class="schedule-row"><span class="schedule-day">Jueves</span><span class="schedule-time">9:30–13:30 / 16:00–20:00</span></div>
+                <div class="schedule-row"><span class="schedule-day">Viernes</span><span class="schedule-time">9:30–13:30</span></div>
+                <div class="schedule-row closed"><span class="schedule-day">Sábado</span><span class="schedule-time">Cerrado</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.8!2d-3.017!3d43.319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f5b5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2sGeneral%20Casta%C3%B1os%2C%2060%2C%2048920%20Portugalete!5e0!3m2!1ses!2ses!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-inner">
+    <span class="section-tag reveal">Contacto</span>
+    <h2 class="section-title reveal">¿Listo para empezar?</h2>
+    <p class="section-subtitle reveal">Pide tu cita o consúltanos sin compromiso. Respondemos en menos de 24 horas.</p>
+    <div class="contact-grid">
+      <div class="contact-channels reveal">
+        <a href="https://wa.me/34944934141" class="contact-channel" target="_blank">
+          <div class="channel-icon whatsapp">💬</div>
+          <div>
+            <div class="channel-label">WhatsApp — Respuesta rápida</div>
+            <div class="channel-value">+34 944 93 41 41</div>
+          </div>
+          <span style="color:rgba(255,255,255,0.3); margin-left:auto;">→</span>
+        </a>
+        <a href="tel:944934141" class="contact-channel">
+          <div class="channel-icon phone">📞</div>
+          <div>
+            <div class="channel-label">Teléfono</div>
+            <div class="channel-value">944 93 41 41</div>
+          </div>
+          <span style="color:rgba(255,255,255,0.3); margin-left:auto;">→</span>
+        </a>
+        <a href="mailto:info@portudent.es" class="contact-channel">
+          <div class="channel-icon email">✉️</div>
+          <div>
+            <div class="channel-label">Email</div>
+            <div class="channel-value">info@portudent.es</div>
+          </div>
+          <span style="color:rgba(255,255,255,0.3); margin-left:auto;">→</span>
+        </a>
+        <div class="contact-channel" style="cursor:default; pointer-events:none;">
+          <div class="channel-icon" style="background:rgba(255,255,255,0.06);">📍</div>
+          <div>
+            <div class="channel-label">Dirección</div>
+            <div class="channel-value">General Castaños 60, Portugalete</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-title">Envíanos un mensaje</div>
+        <div class="form-group">
+          <label class="form-label">Nombre completo</label>
+          <input type="text" class="form-input" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Teléfono o email</label>
+          <input type="text" class="form-input" placeholder="Para contactarte">
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿En qué podemos ayudarte?</label>
+          <textarea class="form-textarea" placeholder="Cuéntanos tu consulta o el tratamiento que necesitas..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Enviar mensaje →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Por<span>TU</span>Dent</div>
+    <div class="footer-text">© 2025 PorTUDent Clínica Dental · General Castaños 60, Portugalete · 944 93 41 41</div>
+    <div class="footer-links">
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#precios">Precios</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+
+
+<script>
+// FAQ toggle
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Mobile menu
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'fixed';
+  links.style.top = '70px';
+  links.style.left = '0';
+  links.style.right = '0';
+  links.style.background = 'rgba(13,31,60,0.98)';
+  links.style.padding = '1.5rem 5%';
+  links.style.gap = '1.2rem';
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form submit
+function submitForm() {
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✓ Mensaje enviado';
+  btn.style.background = '#16a34a';
+  setTimeout(() => {
+    btn.textContent = 'Enviar mensaje →';
+    btn.style.background = '';
+  }, 3000);
+}
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 50) {
+    nav.style.height = '60px';
+    nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.25)';
+  } else {
+    nav.style.height = '70px';
+    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+  }
+});
+</script>
+</body>
+</html>
