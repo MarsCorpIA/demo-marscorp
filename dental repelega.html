@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dental Repelega · Clínica Dental Infantil · Portugalete</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #0b6e72; --teal-dark: #064d50; --teal-light: #13969c;
+  --teal-pale: #e6f6f7; --accent: #f0a500; --accent-light: #ffc53d;
+  --white: #ffffff; --off-white: #f7fafa; --gray: #617073;
+  --gray-light: #e8eeef; --text: #0d2426;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Plus Jakarta Sans',sans-serif; color:var(--text); background:var(--white); overflow-x:hidden; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5%; height:64px;
+  background:rgba(6,77,80,0.97); backdrop-filter:blur(14px);
+  box-shadow:0 2px 24px rgba(0,0,0,0.18); transition:height 0.3s;
+}
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark { width:36px; height:36px; border-radius:9px; background:linear-gradient(135deg,var(--teal-light),var(--accent)); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.logo-text-main { font-family:'Fraunces',serif; font-size:17px; font-weight:700; color:var(--white); line-height:1.1; }
+.logo-text-sub { font-size:10px; color:rgba(255,255,255,0.45); font-weight:400; letter-spacing:0.07em; display:block; }
+.nav-links { display:flex; gap:24px; list-style:none; }
+.nav-links a { text-decoration:none; color:rgba(255,255,255,0.7); font-size:13px; font-weight:500; transition:color 0.2s; white-space:nowrap; }
+.nav-links a:hover { color:var(--accent-light); }
+.nav-cta { background:var(--accent); color:var(--text); padding:9px 18px; border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; transition:all 0.2s; white-space:nowrap; }
+.nav-cta:hover { background:var(--accent-light); }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.hamburger span { width:22px; height:2px; background:white; border-radius:2px; transition:all 0.3s; }
+.mobile-menu { display:none; position:fixed; top:64px; left:0; right:0; background:rgba(6,77,80,0.99); padding:20px 5% 28px; z-index:999; border-top:1px solid rgba(255,255,255,0.08); }
+.mobile-menu.open { display:block; }
+.mobile-menu a { display:block; padding:12px 0; color:rgba(255,255,255,0.8); text-decoration:none; font-size:15px; font-weight:500; border-bottom:1px solid rgba(255,255,255,0.07); }
+.mobile-menu a:last-child { border:none; margin-top:16px; background:var(--accent); color:var(--text); text-align:center; border-radius:8px; font-weight:700; padding:13px; }
+
+/* ── HERO ── */
+#inicio { min-height:100vh; background:var(--teal-dark); display:flex; align-items:center; position:relative; overflow:hidden; padding:0 5%; }
+.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(19,150,156,0.25) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 5% 90%,rgba(240,165,0,0.07) 0%,transparent 55%); }
+.hero-dots { position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.04) 1.5px,transparent 1.5px); background-size:32px 32px; }
+.hero-inner { position:relative; z-index:2; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; max-width:1200px; margin:0 auto; padding-top:64px; min-height:100vh; }
+
+.hero-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(240,165,0,0.15); border:1px solid rgba(240,165,0,0.3); color:var(--accent-light); padding:6px 14px; border-radius:20px; font-size:11px; font-weight:600; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:22px; animation:fadeUp 0.5s ease both; }
+.hero-pill::before { content:''; width:6px; height:6px; background:var(--accent); border-radius:50%; animation:blink 2s infinite; }
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero-title { font-family:'Fraunces',serif; font-size:clamp(32px,4vw,54px); font-weight:700; color:var(--white); line-height:1.1; margin-bottom:16px; animation:fadeUp 0.5s 0.1s ease both; }
+.hero-title em { font-style:normal; color:var(--accent); }
+.hero-title span { display:block; font-size:clamp(13px,1.4vw,16px); font-weight:400; color:rgba(255,255,255,0.5); margin-top:8px; font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:0.01em; }
+.hero-sub { font-size:clamp(14px,1.5vw,16px); color:rgba(255,255,255,0.6); line-height:1.75; margin-bottom:32px; font-weight:300; animation:fadeUp 0.5s 0.2s ease both; }
+
+.hero-btns { display:flex; gap:12px; flex-wrap:wrap; animation:fadeUp 0.5s 0.3s ease both; }
+.btn-gold { display:inline-flex; align-items:center; gap:8px; background:var(--accent); color:var(--text); padding:13px 24px; border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; transition:all 0.25s; box-shadow:0 4px 18px rgba(240,165,0,0.35); white-space:nowrap; }
+.btn-gold:hover { background:var(--accent-light); transform:translateY(-2px); }
+.btn-outline { display:inline-flex; align-items:center; gap:8px; background:transparent; color:white; padding:13px 24px; border-radius:8px; font-size:14px; font-weight:500; text-decoration:none; border:1.5px solid rgba(255,255,255,0.22); transition:all 0.25s; white-space:nowrap; }
+.btn-outline:hover { border-color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.07); }
+
+.hero-stats { display:flex; gap:32px; margin-top:44px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.1); animation:fadeUp 0.5s 0.4s ease both; flex-wrap:wrap; }
+.stat-num { font-family:'Fraunces',serif; font-size:28px; font-weight:700; color:var(--white); display:block; }
+.stat-num em { font-style:normal; color:var(--accent); }
+.stat-lbl { font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:0.04em; }
+
+.hero-imgs { display:grid; grid-template-rows:1fr auto; gap:10px; animation:fadeRight 0.6s 0.2s ease both; }
+.hero-img-top { width:100%; height:280px; object-fit:cover; border-radius:14px; border:2px solid rgba(255,255,255,0.08); background:var(--teal); }
+.hero-img-bot { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.hero-img-sm { width:100%; height:140px; object-fit:cover; border-radius:10px; border:2px solid rgba(255,255,255,0.08); background:var(--teal-light); }
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── SECTIONS ── */
+section { padding:80px 5%; }
+.section-wrap { max-width:1200px; margin:0 auto; }
+.section-tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; color:var(--teal-light); margin-bottom:10px; }
+.section-tag.light { color:rgba(255,255,255,0.45); }
+.section-title { font-family:'Fraunces',serif; font-size:clamp(24px,3vw,38px); font-weight:700; color:var(--text); line-height:1.2; margin-bottom:12px; }
+.section-title.light { color:var(--white); }
+.section-sub { font-size:15px; color:var(--gray); line-height:1.7; max-width:500px; font-weight:300; }
+.section-sub.light { color:rgba(255,255,255,0.55); }
+.section-head { margin-bottom:48px; }
+
+/* ── SERVICIOS ── */
+#tratamientos { background:var(--off-white); }
+.infant-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(240,165,0,0.12); border:1px solid rgba(240,165,0,0.25); color:#7a5000; padding:4px 12px; border-radius:20px; font-size:11px; font-weight:600; margin-bottom:40px; }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+.svc-card { background:var(--white); border-radius:12px; padding:26px; border:1.5px solid var(--gray-light); transition:all 0.3s; position:relative; }
+.svc-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--teal),var(--teal-light)); border-radius:0 0 12px 12px; transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
+.svc-card:hover { transform:translateY(-4px); box-shadow:0 14px 32px rgba(11,110,114,0.1); border-color:var(--teal-pale); }
+.svc-card:hover::after { transform:scaleX(1); }
+.svc-icon { width:44px; height:44px; border-radius:10px; background:var(--teal-pale); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:16px; }
+.svc-name { font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--text); margin-bottom:7px; }
+.svc-desc { font-size:13px; color:var(--gray); line-height:1.65; }
+
+/* ── PRECIOS ── */
+#precios { background:var(--white); }
+.prices-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+.price-card { border:1.5px solid var(--gray-light); border-radius:12px; overflow:hidden; transition:all 0.3s; }
+.price-card:hover { border-color:var(--teal-light); transform:translateY(-3px); box-shadow:0 10px 26px rgba(11,110,114,0.1); }
+.price-card.featured { border-color:var(--teal); background:var(--teal-dark); }
+.price-top { padding:22px 24px 18px; border-bottom:1px solid var(--gray-light); }
+.price-card.featured .price-top { border-color:rgba(255,255,255,0.1); }
+.featured-pill { display:inline-block; background:var(--accent); color:var(--text); font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+.price-name { font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:var(--text); margin-bottom:4px; }
+.price-card.featured .price-name { color:var(--white); }
+.price-desde { font-size:12px; color:var(--gray); }
+.price-card.featured .price-desde { color:rgba(255,255,255,0.45); }
+.price-amount { font-family:'Fraunces',serif; font-size:32px; font-weight:700; color:var(--teal); margin-top:6px; }
+.price-card.featured .price-amount { color:var(--accent); }
+.price-amount sup { font-size:15px; vertical-align:top; margin-top:7px; display:inline-block; }
+.price-body { padding:20px 24px; }
+.price-list { list-style:none; }
+.price-list li { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--gray); padding:6px 0; border-bottom:1px solid var(--gray-light); line-height:1.4; }
+.price-card.featured .price-list li { color:rgba(255,255,255,0.6); border-color:rgba(255,255,255,0.08); }
+.price-list li::before { content:'✓'; color:var(--teal-light); font-weight:700; font-size:11px; flex-shrink:0; margin-top:2px; }
+.price-card.featured .price-list li::before { color:var(--accent); }
+.price-note { font-size:11px; color:var(--gray); margin-top:12px; font-style:italic; line-height:1.5; }
+.price-card.featured .price-note { color:rgba(255,255,255,0.35); }
+
+/* ── RESEÑAS ── */
+#reseñas { background:var(--teal-dark); }
+.rating-bar { display:flex; align-items:center; gap:2rem; margin-bottom:2.5rem; padding:1.5rem 2rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:14px; flex-wrap:wrap; }
+.rating-bar > div:last-child { margin-left:auto; }
+.rb-num { font-family:'Fraunces',serif; font-size:3.2rem; font-weight:700; color:var(--white); line-height:1; }
+.rb-num em { font-style:normal; color:var(--accent); }
+.rb-stars { font-size:1.2rem; margin-bottom:3px; }
+.rb-count { font-size:0.84rem; color:rgba(255,255,255,0.45); }
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+.rev-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:24px; transition:all 0.3s; }
+.rev-card:hover { background:rgba(255,255,255,0.08); border-color:rgba(19,150,156,0.3); transform:translateY(-3px); }
+.rev-stars { font-size:13px; margin-bottom:13px; letter-spacing:1px; }
+.rev-text { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.72; margin-bottom:16px; font-weight:300; font-style:italic; }
+.rev-text::before { content:'"'; color:var(--accent); font-size:24px; font-family:'Fraunces',serif; line-height:0; vertical-align:-9px; margin-right:3px; }
+.rev-author { display:flex; align-items:center; gap:10px; }
+.rev-av { width:36px; height:36px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:white; }
+.rev-name { font-size:13px; font-weight:600; color:var(--white); }
+.rev-date { font-size:11px; color:rgba(255,255,255,0.4); margin-top:1px; }
+
+/* ── FAQ ── */
+#faq { background:var(--off-white); }
+.faq-cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.faq-item { background:var(--white); border:1.5px solid var(--gray-light); border-radius:10px; overflow:hidden; transition:box-shadow 0.2s; }
+.faq-item:hover { box-shadow:0 4px 14px rgba(11,110,114,0.08); }
+.faq-q { display:flex; align-items:center; justify-content:space-between; padding:17px 20px; cursor:pointer; font-size:13px; font-weight:600; color:var(--text); gap:10px; user-select:none; }
+.faq-q span { flex:1; line-height:1.4; }
+.faq-arrow { width:24px; height:24px; border-radius:50%; background:var(--teal-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:13px; color:var(--teal); transition:all 0.3s; }
+.faq-item.open .faq-arrow { background:var(--teal); color:white; transform:rotate(45deg); }
+.faq-a { padding:0 20px; max-height:0; overflow:hidden; transition:all 0.3s; font-size:13px; color:var(--gray); line-height:1.7; font-weight:300; }
+.faq-item.open .faq-a { max-height:200px; padding:0 20px 16px; }
+
+/* ── COMO LLEGAR ── */
+#como-llegar { background:var(--white); }
+.llegar-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:44px; align-items:start; margin-top:40px; }
+.info-block { display:flex; align-items:flex-start; gap:14px; margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--gray-light); }
+.info-block:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.info-ico { width:40px; height:40px; background:var(--teal-pale); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.info-lbl { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:4px; }
+.info-val { font-size:14px; color:var(--text); font-weight:500; line-height:1.5; }
+.info-val a { color:var(--text); text-decoration:none; }
+.hor-grid { display:grid; grid-template-columns:auto 1fr; gap:3px 12px; font-size:13px; }
+.h-dia { color:var(--gray); font-weight:500; }
+.h-hora { color:var(--text); }
+
+/* MAPA real embebido */
+.map-box { border-radius:14px; overflow:hidden; border:1px solid var(--gray-light); }
+.map-box iframe { width:100%; height:380px; border:none; display:block; }
+
+/* ── CONTACTO ── */
+#contacto { background:var(--teal-dark); }
+.contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:56px; align-items:start; margin-top:40px; }
+.contact-desc { font-size:15px; color:rgba(255,255,255,0.55); line-height:1.75; font-weight:300; margin-bottom:28px; }
+.contact-ops { display:flex; flex-direction:column; gap:12px; }
+.contact-op { display:flex; align-items:center; gap:14px; padding:15px 18px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); text-decoration:none; transition:all 0.25s; }
+.contact-op:hover { border-color:var(--teal-light); background:rgba(255,255,255,0.06); transform:translateX(4px); }
+.co-ico { width:38px; height:38px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; background:rgba(59,130,246,0.15); }
+.co-lbl { font-size:10px; color:rgba(255,255,255,0.4); font-weight:600; letter-spacing:0.07em; text-transform:uppercase; }
+.co-val { font-size:14px; color:var(--white); font-weight:500; margin-top:2px; }
+.form-group { margin-bottom:16px; }
+.form-label { display:block; font-size:11px; font-weight:600; color:rgba(255,255,255,0.45); letter-spacing:0.09em; text-transform:uppercase; margin-bottom:6px; }
+.form-input { width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:12px 14px; font-size:14px; color:var(--white); font-family:'Plus Jakarta Sans',sans-serif; transition:all 0.2s; outline:none; resize:none; }
+.form-input::placeholder { color:rgba(255,255,255,0.22); }
+.form-input:focus { border-color:var(--teal-light); background:rgba(255,255,255,0.09); }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.btn-submit { width:100%; background:var(--accent); color:var(--text); border:none; padding:14px; border-radius:8px; font-size:14px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif; cursor:pointer; transition:all 0.25s; }
+.btn-submit:hover { background:var(--accent-light); transform:translateY(-2px); box-shadow:0 8px 22px rgba(240,165,0,0.35); }
+
+/* ── FOOTER ── */
+footer { background:#031e20; padding:32px 5%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; border-top:1px solid rgba(255,255,255,0.05); }
+.footer-copy { font-size:12px; color:rgba(255,255,255,0.28); }
+.footer-links { display:flex; gap:20px; flex-wrap:wrap; }
+.footer-links a { font-size:12px; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--accent); }
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── DEMO TAG ── */
+.demo-tag { position:fixed; bottom:18px; right:18px; z-index:999; background:var(--teal); color:white; padding:9px 16px; border-radius:28px; font-size:12px; font-weight:600; box-shadow:0 6px 22px rgba(11,110,114,0.4); letter-spacing:0.02em; }
+
+/* ════════════════════════════════
+   RESPONSIVE — MOBILE FIRST
+   Todo lo que puede romperse en
+   pantallas pequeñas está aquí.
+   ════════════════════════════════ */
+
+/* Tablet 900px */
+@media (max-width:900px) {
+  .nav-links { display:none; }
+  .nav-cta { display:none; }
+  .hamburger { display:flex; }
+
+  .hero-inner { grid-template-columns:1fr; gap:0; padding-bottom:40px; }
+  .hero-imgs { display:none; }
+  .hero-content { padding-top:20px; }
+
+  .llegar-grid { grid-template-columns:1fr; gap:32px; }
+  .contact-grid { grid-template-columns:1fr; gap:36px; }
+  .faq-cols { grid-template-columns:1fr; }
+
+  footer { flex-direction:column; align-items:flex-start; }
+}
+
+/* Mobile 600px */
+@media (max-width:600px) {
+  section { padding:56px 4%; }
+  .section-head { margin-bottom:36px; }
+
+  /* Hero */
+  .hero-title { font-size:32px; }
+  .hero-btns { flex-direction:column; }
+  .hero-btns a { width:100%; justify-content:center; }
+  .hero-stats { gap:20px; }
+  .hero-stats > div { min-width:80px; }
+
+  /* Rating bar reseñas */
+  .rating-bar { flex-direction:column; align-items:flex-start; gap:1rem; }
+  .rating-bar > div:last-child { margin-left:0; width:100%; }
+  .rating-bar > div:last-child a { width:100%; display:block; text-align:center; }
+
+  /* Grids a 1 columna forzado */
+  .services-grid { grid-template-columns:1fr; }
+  .prices-grid { grid-template-columns:1fr; }
+  .reviews-grid { grid-template-columns:1fr; }
+
+  /* Formulario */
+  .form-row { grid-template-columns:1fr; }
+
+  /* Mapa altura reducida */
+  .map-box iframe { height:260px; }
+
+  /* Demo tag más pequeño */
+  .demo-tag { font-size:11px; padding:8px 13px; bottom:12px; right:12px; }
+
+  /* Footer links en columna */
+  .footer-links { flex-direction:column; gap:8px; }
+}
+
+/* Mobile pequeño 380px */
+@media (max-width:380px) {
+  nav { padding:0 4%; }
+  .logo-text-sub { display:none; }
+  .hero-title { font-size:28px; }
+  .stat-num { font-size:24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-tag">⚡ Demo — Mars Corp</div>
+
+<!-- NAVBAR -->
+<nav id="mainNav">
+  <a href="#inicio" class="nav-logo">
+    <div class="logo-mark">🦷</div>
+    <div>
+      <div class="logo-text-main">Dental Repelega</div>
+      <span class="logo-text-sub">Clínica Dental · Portugalete</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#tratamientos">Tratamientos</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#reseñas">Reseñas</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#como-llegar">Cómo llegar</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Pedir cita</a>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#tratamientos" onclick="closeMenu()">Tratamientos</a>
+  <a href="#precios" onclick="closeMenu()">Precios</a>
+  <a href="#reseñas" onclick="closeMenu()">Reseñas</a>
+  <a href="#faq" onclick="closeMenu()">FAQ</a>
+  <a href="#como-llegar" onclick="closeMenu()">Cómo llegar</a>
+  <a href="#contacto" onclick="closeMenu()">📅 Pedir cita</a>
+</div>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-pill">📍 Barrengoitia, Portugalete</div>
+      <h1 class="hero-title">
+        Cuidamos tu sonrisa<br>y la de tus <em>hijos</em>
+        <span>Especializados en odontología infantil y familiar</span>
+      </h1>
+      <p class="hero-sub">En Dental Repelega llevamos décadas cuidando la salud bucodental de las familias de Portugalete. Trato cercano, profesional y sin dolor.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-gold">📅 Pedir cita</a>
+        <a href="tel:946025555" class="btn-outline">📞 946 02 55 55</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-num">4.<em>6</em></span><span class="stat-lbl">Valoración Google</span></div>
+        <div><span class="stat-num">19</span><span class="stat-lbl">Reseñas verificadas</span></div>
+        <div><span class="stat-num">+<em>30</em></span><span class="stat-lbl">Años de experiencia</span></div>
+      </div>
+    </div>
+    <div class="hero-imgs">
+      <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=800&q=80" alt="Dentista infantil" class="hero-img-top">
+      <div class="hero-img-bot">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=80" alt="Consulta dental" class="hero-img-sm">
+        <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80" alt="Equipo moderno" class="hero-img-sm">
+        <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400&q=80" alt="Clínica dental" class="hero-img-sm">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos">
+  <div class="section-wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Nuestros servicios</span>
+      <h2 class="section-title">Tratamientos para toda la familia</h2>
+      <p class="section-sub">Desde la primera visita de los más pequeños hasta tratamientos especializados para adultos.</p>
+    </div>
+    <div class="infant-badge reveal">👶 Especializados en odontopediatría</div>
+    <div class="services-grid">
+      <div class="svc-card reveal"><div class="svc-icon">👶</div><div class="svc-name">Odontopediatría</div><p class="svc-desc">Especialistas en la salud dental de niños desde los primeros dientes. Ambiente acogedor para que los pequeños pierdan el miedo.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">🦷</div><div class="svc-name">Implantes Dentales</div><p class="svc-desc">Implantes de titanio de alta calidad con seguimiento personalizado. Solución definitiva para recuperar tu sonrisa completa.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">😁</div><div class="svc-name">Ortodoncia</div><p class="svc-desc">Brackets metálicos, de zafiro o alineadores invisibles para niños y adultos. Revisiones incluidas.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">✨</div><div class="svc-name">Blanqueamiento</div><p class="svc-desc">Tratamientos profesionales en clínica o para casa. Resultados visibles y seguros con materiales homologados.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">🛡️</div><div class="svc-name">Férulas de Descarga</div><p class="svc-desc">Tratamiento del bruxismo con férulas personalizadas ajustadas a tu mordida para proteger tus dientes.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">🔬</div><div class="svc-name">Periodoncia</div><p class="svc-desc">Diagnóstico y tratamiento de enfermedades periodontales. Limpiezas profundas y mantenimiento para encías sanas.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">🦴</div><div class="svc-name">Endodoncia</div><p class="svc-desc">Tratamiento de conductos con mínimo dolor. Preservamos tu diente natural siempre que sea posible.</p></div>
+      <div class="svc-card reveal"><div class="svc-icon">🧹</div><div class="svc-name">Higiene y Prevención</div><p class="svc-desc">Limpiezas profesionales, selladores de fisuras y revisiones periódicas. La mejor inversión para tu salud dental.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="section-wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Tarifas orientativas</span>
+      <h2 class="section-title">Precios transparentes</h2>
+      <p class="section-sub">Precios justos y claros. Presupuesto gratuito sin compromiso tras primera visita.</p>
+    </div>
+    <div class="prices-grid">
+      <div class="price-card reveal">
+        <div class="price-top"><div class="price-name">Revisión y Limpieza</div><div class="price-desde">Desde</div><div class="price-amount"><sup>€</sup>40</div></div>
+        <div class="price-body"><ul class="price-list"><li>Revisión completa con radiografía</li><li>Limpieza dental profesional</li><li>Diagnóstico sin compromiso</li><li>Consejos de higiene personalizados</li></ul><p class="price-note">Recomendamos revisión anual para mantener buena salud bucodental.</p></div>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-top"><div class="featured-pill">Más solicitado</div><div class="price-name">Implante Dental</div><div class="price-desde">Desde</div><div class="price-amount"><sup>€</sup>850</div></div>
+        <div class="price-body"><ul class="price-list"><li>Implante de titanio premium</li><li>Corona de porcelana incluida</li><li>Seguimiento post-operatorio</li><li>Garantía en materiales</li><li>Financiación sin intereses</li></ul><p class="price-note">Precio orientativo por implante unitario. Presupuesto personalizado.</p></div>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-top"><div class="price-name">Ortodoncia</div><div class="price-desde">Desde</div><div class="price-amount"><sup>€</sup>1.200</div></div>
+        <div class="price-body"><ul class="price-list"><li>Estudio ortodóncico completo</li><li>Brackets o alineadores invisibles</li><li>Revisiones mensuales incluidas</li><li>Retenedores al finalizar</li></ul><p class="price-note">Disponible para niños y adultos. Consulta sin compromiso.</p></div>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-top"><div class="price-name">Odontopediatría</div><div class="price-desde">Desde</div><div class="price-amount"><sup>€</sup>35</div></div>
+        <div class="price-body"><ul class="price-list"><li>Primera visita infantil</li><li>Revisión y diagnóstico</li><li>Selladores de fisuras</li><li>Fluorización preventiva</li></ul><p class="price-note">Recomendamos la primera visita a partir de los 3 años.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="reseñas">
+  <div class="section-wrap">
+    <div class="section-head reveal">
+      <span class="section-tag light">Lo que dicen nuestros pacientes</span>
+      <h2 class="section-title light">Familias que confían en nosotros</h2>
+    </div>
+    <div class="rating-bar reveal">
+      <div><div class="rb-num">4<em>.6</em></div></div>
+      <div><div class="rb-stars">⭐⭐⭐⭐⭐</div><div class="rb-count">Basado en 19 reseñas en Google</div></div>
+      <div><a href="https://maps.google.com" target="_blank" class="btn-gold" style="font-size:0.84rem;padding:10px 16px;">Ver todas en Google →</a></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="rev-card reveal">
+        <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rev-text">Llevo una vida con ellos. Siempre atentos, dolor en experiencia personal cero, acompañamiento y seguimiento. Super familiar, mis hijos también van.</p>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#0b6e72,#13969c)">A</div><div><div class="rev-name">Aiankhara Saga</div><div class="rev-date">Paciente · Hace 2 años</div></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rev-text">Trato excelente, buenos profesionales. Muy recomendable. Siempre amables y atentos con el cliente. Lo mejor que puedes encontrar en la zona.</p>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#f0a500,#ffc53d);color:#333">S</div><div><div class="rev-name">Sheila Pérez López</div><div class="rev-date">Paciente · Hace 2 años</div></div></div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+        <p class="rev-text">Llevamos toda la familia años yendo. Tanto para los niños como para los adultos, el trato es siempre cercano y muy profesional. Totalmente recomendables.</p>
+        <div class="rev-author"><div class="rev-av" style="background:linear-gradient(135deg,#667eea,#764ba2)">M</div><div><div class="rev-name">María González</div><div class="rev-date">Paciente habitual</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Preguntas frecuentes</span>
+      <h2 class="section-title">Lo que más nos preguntan</h2>
+      <p class="section-sub">¿Más dudas? Llámanos al 946 02 55 55.</p>
+    </div>
+    <div class="faq-cols">
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span>¿A qué edad debe ir el niño por primera vez?</span><div class="faq-arrow">+</div></div><div class="faq-a">Recomendamos la primera visita alrededor de los 2-3 años, cuando ya han salido la mayoría de los dientes de leche. Cuanto antes se acostumbren, mejor será su relación con el dentista de adultos.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span>¿Es necesaria cita previa?</span><div class="faq-arrow">+</div></div><div class="faq-a">Sí, trabajamos con cita previa para garantizarte atención sin esperas. Puedes pedir cita por teléfono al 946 02 55 55 o a través del formulario de esta web.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span>¿Atendéis urgencias dentales?</span><div class="faq-arrow">+</div></div><div class="faq-a">Sí. En caso de urgencia, llámanos al 946 02 55 55 y te atenderemos lo antes posible. Hacemos todo lo posible por darte hueco el mismo día.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span>¿Ofrecéis financiación?</span><div class="faq-arrow">+</div></div><div class="faq-a">Sí, disponemos de opciones de financiación sin intereses para tratamientos de mayor coste como implantes u ortodoncia. Pregúntanos en la visita.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span>¿Trabajáis con seguros dentales?</span><div class="faq-arrow">+</div></div><div class="faq-a">Trabajamos con los principales seguros dentales. Consúltanos si el tuyo está incluido llamando al 946 02 55 55.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q"><span>¿El presupuesto tiene coste?</span><div class="faq-arrow">+</div></div><div class="faq-a">No. El presupuesto tras primera revisión es completamente gratuito y sin compromiso.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO LLEGAR -->
+<section id="como-llegar">
+  <div class="section-wrap">
+    <div class="reveal">
+      <span class="section-tag">Ubicación</span>
+      <h2 class="section-title">Cómo llegar</h2>
+      <p class="section-sub">En el barrio de Barrengoitia, Portugalete. Fácil acceso en transporte público.</p>
+    </div>
+    <div class="llegar-grid">
+      <div class="reveal">
+        <div class="info-block">
+          <div class="info-ico">📍</div>
+          <div><div class="info-lbl">Dirección</div><div class="info-val">Barrengoitia Kalea, 3 bis (lonja)<br>48920 Portugalete, Bizkaia</div></div>
+        </div>
+        <div class="info-block">
+          <div class="info-ico">📞</div>
+          <div><div class="info-lbl">Teléfono</div><div class="info-val"><a href="tel:946025555">946 02 55 55</a></div></div>
+        </div>
+        <div class="info-block">
+          <div class="info-ico">🕐</div>
+          <div>
+            <div class="info-lbl">Horario</div>
+            <div class="hor-grid">
+              <span class="h-dia">Lun – Vie</span><span class="h-hora">9:00–13:00 / 16:00–20:00</span>
+              <span class="h-dia">Sáb – Dom</span><span class="h-hora" style="color:#d32f2f">Cerrado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-box reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.123!2d-3.0203!3d43.3251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4d5c2e2e2e2e%3A0x0!2sBarrengoitia+Kalea+3%2C+48920+Portugalete!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación Dental Repelega en Google Maps">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-wrap">
+    <div class="reveal">
+      <span class="section-tag light">Escríbenos</span>
+      <h2 class="section-title light">Pide tu cita</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="contact-desc">Pide cita o consulta cualquier duda. Te respondemos en horario de apertura.</p>
+        <div class="contact-ops">
+          <a href="tel:946025555" class="contact-op">
+            <div class="co-ico">📞</div>
+            <div><div class="co-lbl">Teléfono</div><div class="co-val">946 02 55 55</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" placeholder="Tu nombre"></div>
+          <div class="form-group"><label class="form-label">Teléfono</label><input class="form-input" type="tel" placeholder="600 000 000"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">¿Para quién es la cita?</label>
+          <select class="form-input">
+            <option value="" style="background:#064d50">Selecciona...</option>
+            <option style="background:#064d50">Para mí (adulto)</option>
+            <option style="background:#064d50">Para mi hijo/a</option>
+            <option style="background:#064d50">Para toda la familia</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tratamiento</label>
+          <select class="form-input">
+            <option value="" style="background:#064d50">Selecciona un tratamiento...</option>
+            <option style="background:#064d50">Revisión y limpieza</option>
+            <option style="background:#064d50">Odontopediatría (niños)</option>
+            <option style="background:#064d50">Implantes</option>
+            <option style="background:#064d50">Ortodoncia</option>
+            <option style="background:#064d50">Urgencia dental</option>
+            <option style="background:#064d50">Otro</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Mensaje (opcional)</label><textarea class="form-input" rows="3" placeholder="Cuéntanos algo más..."></textarea></div>
+        <button class="btn-submit">Solicitar cita →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2025 Dental Repelega · Portugalete, Bizkaia</span>
+  <div class="footer-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#contacto">Contacto</a>
+    <a href="tel:946025555">946 02 55 55</a>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*55); });
+}, { threshold:0.08, rootMargin:'0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// FAQ
+function toggleFaq(item) {
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open) item.classList.add('open');
+}
+
+// Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+// Cerrar menu al hacer click fuera
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+
+// Navbar shrink on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  const menu = document.getElementById('mobileMenu');
+  if(window.scrollY > 50) {
+    nav.style.height = '56px';
+  } else {
+    nav.style.height = '64px';
+  }
+  // Ajustar posición del mobile menu
+  menu.style.top = nav.style.height || '64px';
+});
+</script>
+</body>
+</html>
